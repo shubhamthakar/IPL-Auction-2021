@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static%}
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Waiting Page</title>
+    <link rel="stylesheet" href="{% static 'Content/style.css' %}" />
+    <link rel="shortcut icon" href="{% static 'favicon.png' %}"  />
+  </head>
+  <body>
+    {% comment %} <h1 class="heading" style="font-size: 3em">Waiting page</h1> {% endcomment %}
+    {% if count %}
+      <h1 class="heading">Waiting for {{count}} teams to submit</h1>
+    
+      <h1 class="heading">Till then Lets Play Mario !!</h1>
+    {% else %}
+      <br><br>
+      <h1 class="heading">Lets Play Mario !!</h1>
+    {% endif %}
+    
+
+
+    <div id="game" style="transform: translateY(0.2rem)">
+      <div id="world"></div>
+      <div id="coinNumber" class="gauge">0</div>
+      <div id="coin" class="gaugeSprite"></div>
+      <div id="liveNumber" class="gauge">0</div>
+      <div id="live" class="gaugeSprite"></div>
+    </div>
+
+    <div style="padding: 5rem"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script>
+      window.jQuery || document.write('<script src="{% static 'WaitingScripts/jQuery.js' %}"><\/script>')
+    </script>
+    <script src="{% static 'WaitingScripts/testlevels.js' %}"></script>
+    <script src="{% static 'WaitingScripts/oop.js' %}"></script>
+    <script src="{% static 'WaitingScripts/keys.js' %}"></script>
+    <script src="{% static 'WaitingScripts/constants.js' %}"></script>
+    <script src="{% static 'WaitingScripts/main.js' %}"></script>
+    <script src="{% static 'WaitingScripts/sounds.js' %}"></script>
+
+    {% comment %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    {% endcomment %}
+    <!-- Game Musik -->
+    <audio id="GameMusic" preload="auto" autoplay loop>
+      <source src="{% static 'audio/Overworld.ogg' %}" type="audio/ogg" />
+    </audio>
+    
+
+  </body>
+</html>

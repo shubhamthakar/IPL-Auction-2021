@@ -1,0 +1,352 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+.nav {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  width: 90%;
+  min-height: 10vh;
+  margin-top: 16px;
+  margin-left: 2em;
+  /* margin: auto; */
+  /* font-weight: bold; */
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+}
+
+.login-box {
+  display: flex;
+  /* justify-content: space-around; */
+  align-items: center;
+  flex-direction: column;
+  height: 450px;
+  width: 380px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  border-radius: 10px;
+  color: white;
+}
+
+.login-box:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* For the input field */
+input {
+  width: 50%;
+  text-align: center;
+  padding: 5px;
+  /* border: none; */
+}
+
+button {
+  background-image: linear-gradient(blue, #ff51f8);
+  color: white;
+  padding: 8px 4px;
+  font-size: 16px;
+  border-radius: 12px;
+  margin: 2em;
+  border-style: none;
+  text-align: center;
+  outline: none;
+}
+
+.backButton {
+  position: absolute;
+  top: 2rem;
+  left: 3rem;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: black;
+  transition: all 200ms;
+}
+.backButton:hover {
+  cursor: pointer;
+  font-size: 1.6rem;
+}
+
+.backButton:active {
+  color: red;
+}
+
+/* Buttons Starts */
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.cta {
+  /* max-width: 140px;   */
+  display: flex;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  background: #6225e6;
+  transition: 1s;
+  border-radius: 6px;
+  box-shadow: 4px 4px 0 black;
+  margin-bottom: 10px;
+}
+
+.cta:focus {
+  outline: none;
+}
+
+.cta:hover {
+  max-width: 500px;
+  transition: 0.5s;
+  box-shadow: 10px 10px 0 #fbc638;
+  border-radius: 0px;
+  transform: skewX(-15deg);
+}
+.cta:hover > span {
+  transition: 0.5s;
+  transform: skewX(15deg);
+}
+
+.cta span:nth-child(2) {
+  transition: 0.5s;
+  margin-right: 0px;
+}
+
+.cta:hover span:nth-child(2) {
+  transition: 0.5s;
+  margin-right: 45px;
+}
+
+/* span {
+  transform: skewX(15deg);
+} */
+
+span:nth-child(2) {
+  width: 20px;
+  margin-left: 30px;
+  position: relative;
+  top: 12%;
+}
+
+/**************SVG****************/
+
+path.one {
+  transition: 0.4s;
+  transform: translateX(-60%);
+}
+
+path.two {
+  transition: 0.5s;
+  transform: translateX(-30%);
+}
+
+.cta:hover path.three {
+  animation: color_anim 1s infinite 0.2s;
+}
+
+.cta:hover path.one {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.6s;
+}
+
+.cta:hover path.two {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.4s;
+}
+
+/* SVG animations */
+
+@keyframes color_anim {
+  0% {
+    fill: white;
+  }
+  50% {
+    fill: #fbc638;
+  }
+  100% {
+    fill: white;
+  }
+}
+
+/* Button Ends */
+
+/* For Password box */
+.inp {
+  position: relative;
+  margin: auto;
+  width: 100%;
+  max-width: 280px;
+  height: 53px;
+}
+.inp .border {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 18px;
+  fill: none;
+}
+.inp .border path {
+  stroke: #c8ccd4;
+  stroke-width: 2;
+}
+.inp .border path d {
+  transition: all 0.2s ease;
+}
+.inp .check {
+  position: absolute;
+  top: 20px;
+  right: 50px;
+  fill: none;
+  transform: translate(0, 9px) scale(0);
+  transition: all 0.3s cubic-bezier(0.5, 0.9, 0.25, 1.3);
+  transition-delay: 0.15s;
+}
+.inp .check path {
+  stroke: gold;
+  stroke-width: 2;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  color: white;
+}
+.inp input {
+  -webkit-appearance: none;
+  width: 100%;
+  border: 0;
+  font-family: inherit;
+  padding: 0;
+  height: 48px;
+  font-size: 16px;
+  font-weight: 500;
+  background: none;
+  border-radius: 0;
+  color: white;
+  transition: all 0.15s ease;
+}
+.inp input:focus {
+  outline: none;
+}
+.inp input:focus + .border path {
+  stroke: goldenrod;
+}
+.inp input:valid + .border path {
+  animation: elasticInput 0.8s ease forwards;
+}
+.inp input:valid + .border + .check {
+  transform: translate(0, 0) scale(1);
+}
+::placeholder {
+  color: #9098a9;
+}
+@-moz-keyframes elasticInput {
+  33% {
+    d: path(
+      "M0,12 L226,12 C220,12 220.666667,12 228,12 C239,12 245,1 253,1 C261,1 268,12 278,12 C284.666667,12 285.333333,12 280,12"
+    );
+  }
+  66% {
+    d: path(
+      "M0,12 L226,12 C220,12 220.666667,12 228,12 C239,12 245,17 253,17 C261,17 268,12 278,12 C284.666667,12 285.333333,12 280,12"
+    );
+  }
+}
+@-webkit-keyframes elasticInput {
+  33% {
+    d: path(
+      "M0,12 L226,12 C220,12 220.666667,12 228,12 C239,12 245,1 253,1 C261,1 268,12 278,12 C284.666667,12 285.333333,12 280,12"
+    );
+  }
+  66% {
+    d: path(
+      "M0,12 L226,12 C220,12 220.666667,12 228,12 C239,12 245,17 253,17 C261,17 268,12 278,12 C284.666667,12 285.333333,12 280,12"
+    );
+  }
+}
+@-o-keyframes elasticInput {
+  33% {
+    d: path(
+      "M0,12 L226,12 C220,12 220.666667,12 228,12 C239,12 245,1 253,1 C261,1 268,12 278,12 C284.666667,12 285.333333,12 280,12"
+    );
+  }
+  66% {
+    d: path(
+      "M0,12 L226,12 C220,12 220.666667,12 228,12 C239,12 245,17 253,17 C261,17 268,12 278,12 C284.666667,12 285.333333,12 280,12"
+    );
+  }
+}
+@keyframes elasticInput {
+  33% {
+    d: path(
+      "M0,12 L226,12 C220,12 220.666667,12 228,12 C239,12 245,1 253,1 C261,1 268,12 278,12 C284.666667,12 285.333333,12 280,12"
+    );
+  }
+  66% {
+    d: path(
+      "M0,12 L226,12 C220,12 220.666667,12 228,12 C239,12 245,17 253,17 C261,17 268,12 278,12 C284.666667,12 285.333333,12 280,12"
+    );
+  }
+}
+
+/* password ends */
+
+/* Input form animation starts*/
+.form__field {
+  border: 0;
+
+  outline: 0;
+  font-size: 1.3rem;
+  color: #fff;
+  padding: 7px 0;
+  background: transparent;
+}
+.form__field::placeholder {
+  color: transparent;
+}
+.form__field:placeholder-shown ~ .form__label {
+  font-size: 1rem;
+  cursor: text;
+  top: 20px;
+  transform: translateX(5.5rem);
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 0.3rem;
+  color: #9b9b9b;
+}
+.form__field:focus ~ .form__label {
+  position: absolute;
+  top: 0;
+  /* right: 1px; */
+  display: block;
+  transition: 0.2s;
+  font-size: 0.7rem;
+  color: white;
+  font-weight: 700;
+}
+/* Input form animation ends */
+
+select > option {
+  color: black;
+}

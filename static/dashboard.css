@@ -1,0 +1,715 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 90px;
+  height: 100vh;
+  background-color: black;
+  z-index: 10;
+  top: 0;
+  position: fixed;
+  /* margin-top: 5px; */
+}
+.sideImg {
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+  object-fit: cover;
+  /* background-color: yellow; */
+  /* margin-top: 5px; */
+}
+.powercards {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+
+main {
+  /* background-color: red; */
+  margin-left: 90px;
+  display: inline-block;
+  justify-content: space-between;
+}
+
+button {
+  background-image: linear-gradient(blue, #ff51f8);
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 12px;
+  /* margin-left: 6em; */
+  border-style: none;
+  /* text-align: center; */
+}
+
+.nav {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 10vh;
+  width: 85vw;
+  margin-left: 90px;
+  margin-top: 5px;
+}
+
+/*///////////////////////////////////// Player Card Start ////////////////////////////////////*/
+body {
+  font-family: "Saira Semi Condensed", sans-serif;
+  font-weight: 400;
+
+  /* background: url("https://user-images.githubusercontent.com/22690563/67150939-14a0b180-f2c7-11e9-8016-a993a397e1c5.jpg")
+        no-repeat center center/cover; */
+}
+
+.wrapper {
+  position: relative;
+  display: grid;
+  grid-row-gap: 4rem;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 500px;
+  margin-left: 1rem;
+  margin-top: 2rem;
+}
+
+html {
+  font-size: 10px;
+  overflow-x: hidden;
+}
+.fut-player-card {
+  position: relative;
+  width: 18.75rem;
+  height: 23rem;
+  /*background-image: linear-gradient(red, black);*/
+  background-position: center center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border-radius: 30px;
+  border: 3px solid gold;
+  padding: 1rem 0;
+  z-index: 2;
+  transition: 200ms ease-in;
+}
+.fut-player-card .player-card-top {
+  position: relative;
+  display: flex;
+  color: #e9cc74;
+  padding: 0 1.5rem;
+}
+.fut-player-card .player-card-top .player-master-info {
+  position: absolute;
+  line-height: 2.2rem;
+  font-weight: 300;
+  padding: 1.5rem 0;
+  text-transform: uppercase;
+}
+.fut-player-card .player-card-top .player-master-info .player-rating {
+  font-size: 2rem;
+}
+.fut-player-card .player-card-top .player-master-info .player-position {
+  font-size: 1.4rem;
+}
+.fut-player-card .player-card-top .player-master-info .player-nation {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  margin: 0.3rem 0;
+}
+.fut-player-card .player-card-top .player-master-info .player-nation img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+.fut-player-card .player-card-top .player-master-info .player-club {
+  display: block;
+  width: 2.1rem;
+  height: 2.1rem;
+}
+.fut-player-card .player-card-top .player-master-info .player-club img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+.fut-player-card .player-card-top .player-picture {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.fut-player-card .player-card-top .player-picture img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+  position: relative;
+  right: -1.5rem;
+  bottom: 0;
+}
+.fut-player-card .player-card-top .player-picture .player-extra {
+  position: absolute;
+  right: 0;
+  bottom: -0.5rem;
+  overflow: hidden;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  width: 100%;
+  height: 2rem;
+  padding: 0 1.5rem;
+  text-align: right;
+  background: none;
+}
+.fut-player-card .player-card-top .player-picture .player-extra span {
+  margin-left: 0.6rem;
+  text-shadow: 2px 2px #333;
+}
+.fut-player-card .player-card-bottom {
+  position: relative;
+}
+.fut-player-card .player-card-bottom .player-info {
+  display: block;
+  padding: 0.3rem 0;
+  color: #e9cc74;
+  width: 90%;
+  margin: 0 auto;
+  height: auto;
+  position: relative;
+  z-index: 2;
+}
+.fut-player-card .player-card-bottom .player-info .player-name {
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border-bottom: 2px solid rgba(233, 204, 116, 0.1);
+  padding-bottom: 0.3rem;
+  overflow: hidden;
+}
+.fut-player-card .player-card-bottom .player-info .player-name span {
+  display: block;
+  text-shadow: 2px 2px #111;
+}
+.fut-player-card .player-card-bottom .player-info .player-features {
+  margin: 0.5rem auto;
+  display: flex;
+  justify-content: center;
+}
+.fut-player-card
+  .player-card-bottom
+  .player-info
+  .player-features
+  .player-features-col {
+  border-right: 2px solid rgba(233, 204, 116, 0.1);
+  padding: 0.5rem 2.3rem;
+  line-height: 1.8rem;
+}
+.fut-player-card
+  .player-card-bottom
+  .player-info
+  .player-features
+  .player-features-col
+  span {
+  display: flex;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+.fut-player-card
+  .player-card-bottom
+  .player-info
+  .player-features
+  .player-features-col
+  span
+  .player-feature-value {
+  margin-right: 0.3rem;
+  font-weight: 800;
+}
+.fut-player-card
+  .player-card-bottom
+  .player-info
+  .player-features
+  .player-features-col
+  span
+  .player-feature-title {
+  font-weight: 300;
+}
+.fut-player-card
+  .player-card-bottom
+  .player-info
+  .player-features
+  .player-features-col:last-child {
+  border: 0;
+}
+/*///////////////////////////////////// Player Card End ////////////////////////////////////*/
+
+/* Button CSS */
+@import url("https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap");
+:root {
+  --background: #33837e;
+  --left-side: white;
+  --card: #c7ffbc;
+  --card-line: #80ea69;
+  --button-color-3: #26850e;
+  --button-color-2: #379e1f;
+  --button-color-1: #56be3e;
+  --post: #dddde0;
+  --numbers: #838183;
+  --numbers-2: #aaa9ab;
+  --post-line: #757375;
+  --post-line2: #545354;
+  --dollar: #4b953b;
+}
+
+.container-box {
+  background-color: white;
+  display: flex;
+  width: 150px;
+  height: 70px;
+  position: relative;
+  border-radius: 6px;
+  transition: 0.3s ease-in-out;
+}
+/* .container-box:beore {
+  /* width: 23vw; 
+  position: absolute;
+  top: 0;
+  /* left: 100vw; 
+  height: 100%;
+  content: "";
+  border-radius: 6px;
+} */
+.container-box:hover {
+  transform: scale(1.03);
+  width: 120px;
+  transform: translateX(1rem);
+  border-radius: 6px;
+}
+.container-box:hover .left-side {
+  width: 100%;
+}
+
+.left-side {
+  background-color: var(--left-side);
+  width: 50px;
+  height: 70px;
+  border-radius: 6px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.right-side {
+  width: calc(120%);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  justify-content: space-between;
+  white-space: nowrap;
+  transition: 0.3s;
+}
+.right-side:hover {
+  background-color: #f9f7f9;
+}
+
+.arrow {
+  width: 20px;
+  height: 20px;
+  margin-right: 20px;
+}
+
+.new {
+  font-size: 20.5px;
+  font-family: "Lexend Deca", sans-serif;
+  margin-left: 0px;
+}
+
+.card {
+  width: 30px;
+  height: 22px;
+  background-color: var(--card);
+  border-radius: 2px;
+  position: absolute;
+  display: flex;
+  z-index: 10;
+  flex-direction: column;
+  align-items: center;
+  -webkit-box-shadow: 4px 4px 4px -2px rgba(77, 200, 143, 0.72);
+  -moz-box-shadow: 4px 4px 4px -2px rgba(77, 200, 143, 0.72);
+  -webkit-box-shadow: 4px 4px 4px -2px rgba(77, 200, 143, 0.72);
+}
+
+.card-line {
+  width: 30px;
+  height: 2px;
+  background-color: var(--card-line);
+  border-radius: 2px;
+  margin-top: 5px;
+}
+
+@media only screen and (max-width: 480px) {
+  .container-box {
+    transform: scale(0.7);
+  }
+  .container-box:hover {
+    transform: scale(0.74);
+  }
+
+  .new {
+    font-size: 16px;
+  }
+}
+.buttons {
+  width: 3px;
+  height: 3px;
+  background-color: var(--button-color-2);
+  box-shadow: 0 -5px 0 0 var(--button-color-3), 0 5px 0 0 var(--button-color-1);
+  border-radius: 50%;
+  margin-top: 5px;
+  transform: rotate(90deg);
+  margin: 6px 0 0 -8px;
+  padding: 0px;
+}
+
+.container-box:hover .card {
+  animation: slide-top 1.2s cubic-bezier(0.645, 0.045, 0.355, 1) both;
+}
+
+.container-box:hover .post {
+  animation: slide-post 1s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+}
+
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(-70px) rotate(90deg);
+    transform: translateY(-70px) rotate(90deg);
+  }
+  60% {
+    -webkit-transform: translateY(-70px) rotate(90deg);
+    transform: translateY(-70px) rotate(90deg);
+  }
+  100% {
+    -webkit-transform: translateY(-8px) rotate(90deg);
+    transform: translateY(-8px) rotate(90deg);
+  }
+}
+.post {
+  width: 48px;
+  height: 58px;
+  background-color: var(--post);
+  position: absolute;
+  z-index: 11;
+  bottom: 10px;
+  top: 100px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.post-line {
+  width: 25px;
+  height: 6px;
+  background-color: var(--post-line2);
+  position: absolute;
+  border-radius: 0px 0px 3px 3px;
+  right: 11px;
+  top: 0.3px;
+}
+
+.screen {
+  width: 28px;
+  height: 17px;
+  background-color: #ffffff;
+  position: absolute;
+  top: 11px;
+  right: 10.5px;
+  border-radius: 3px;
+}
+
+.numbers {
+  width: 12.5px;
+  height: 12.5px;
+  background-color: var(--numbers);
+  box-shadow: 0 18px 0 0 var(--numbers);
+  border-radius: 2px;
+  position: absolute;
+  transform: rotate(90deg);
+  left: 27px;
+  top: 35px;
+}
+
+@keyframes slide-post {
+  50% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-70px);
+    transform: translateY(-70px);
+  }
+}
+.dollar {
+  position: absolute;
+  font-size: 14px;
+  font-family: "Lexend Deca", sans-serif;
+  width: 100%;
+  left: 0;
+  top: 0;
+  color: var(--dollar);
+  text-align: center;
+}
+
+.container-box:hover .dollar {
+  animation: fade-in-fwd 0.3s 1s backwards;
+}
+
+@keyframes fade-in-fwd {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Button CSS Ends */
+
+.backButton {
+  position: absolute;
+  top: 5rem;
+  left: 15rem;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: black;
+  transition: all 200ms;
+}
+.backButton:hover {
+  cursor: pointer;
+  font-size: 1.6rem;
+}
+
+/* Submenu CSS */
+.submenu.show {
+  display: block;
+}
+
+.submenu-center {
+  display: grid;
+  gap: 0.25rem 2rem;
+}
+.col-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.col-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.col-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+.submenu h4 {
+  margin-bottom: 1.5rem;
+}
+.submenu-center a {
+  width: 10rem;
+  display: block;
+  color: var(--clr-grey-1);
+  text-transform: capitalize;
+}
+.submenu-center i {
+  color: var(--clr-grey-5);
+  margin-right: 1rem;
+}
+
+/* Tooltip starts */
+/* START TOOLTIP STYLES */
+[tooltip] {
+  position: relative; /* opinion 1 */
+}
+
+/* Applies to all tooltips */
+[tooltip]::before,
+[tooltip]::after {
+  text-transform: none; /* opinion 2 */
+  font-size: 1.5rem; /* opinion 3 */
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  display: none;
+  opacity: 0;
+  /* white-space: pre-wrap; */
+}
+[tooltip]-inner {
+  white-space: pre-wrap;
+}
+[tooltip]::before {
+  content: "";
+  border: 5px solid transparent; /* opinion 4 */
+  z-index: 1001; /* absurdity 1 */
+}
+[tooltip]::after {
+  content: attr(tooltip); /* magic! */
+
+  /* most of the rest of this is opinion */
+  /* font-family: Helvetica, sans-serif; */
+  text-align: center;
+
+  /* 
+    Let the content set the size of the tooltips 
+    but this will also keep them from being obnoxious
+    */
+  min-width: 20rem;
+  max-width: 30rem;
+  white-space: normal;
+  /* overflow: hidden;
+  text-overflow: ellipsis; */
+  padding: 1.5ch 1.5ch;
+  border-radius: 0.3ch;
+  box-shadow: 0 1em 2em -0.5em rgba(0, 0, 0, 0.35);
+  background: #333;
+  color: #fff;
+  z-index: 1000; /* absurdity 2 */
+}
+
+/* Make the tooltips respond to hover */
+[tooltip]:hover::before,
+[tooltip]:hover::after {
+  display: block;
+}
+
+/* don't show empty tooltips */
+[tooltip=""]::before,
+[tooltip=""]::after {
+  display: none !important;
+}
+
+/* FLOW: DOWN */
+[tooltip][flow^="down"]::before {
+  top: 100%;
+  border-top-width: 0;
+  border-bottom-color: #333;
+}
+[tooltip][flow^="down"]::after {
+  top: calc(100% + 5px);
+}
+[tooltip][flow^="down"]::before,
+[tooltip][flow^="down"]::after {
+  left: 50%;
+  transform: translate(-50%, 0.5em);
+}
+
+/* FLOW: RIGHT */
+[tooltip][flow^="right"]::before {
+  top: 50%;
+  border-left-width: 0;
+  border-right-color: #333;
+  right: calc(0em - 5px);
+  transform: translate(0.5em, -50%);
+}
+[tooltip][flow^="right"]::after {
+  top: 50%;
+  left: calc(100% + 5px);
+  transform: translate(0.5em, -50%);
+}
+
+/* KEYFRAMES */
+@keyframes tooltips-vert {
+  to {
+    opacity: 0.9;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes tooltips-horz {
+  to {
+    opacity: 0.9;
+    transform: translate(0, -50%);
+  }
+}
+
+/* FX All The Things */
+[tooltip]:not([flow]):hover::before,
+[tooltip]:not([flow]):hover::after,
+[tooltip][flow^="up"]:hover::before,
+[tooltip][flow^="up"]:hover::after,
+[tooltip][flow^="down"]:hover::before,
+[tooltip][flow^="down"]:hover::after {
+  animation: tooltips-vert 300ms ease-out forwards;
+}
+
+[tooltip][flow^="left"]:hover::before,
+[tooltip][flow^="left"]:hover::after,
+[tooltip][flow^="right"]:hover::before,
+[tooltip][flow^="right"]:hover::after {
+  animation: tooltips-horz 300ms ease-out forwards;
+}
+
+
+.playerType {
+  margin-right: 0.2rem;
+}
+
+#playersSelectedDiv {
+  position: fixed;
+  top: 8%;
+  right: -19rem;
+  width: 19rem;
+  height: 22rem;
+  font-size: 1.7rem;
+  background-image: linear-gradient(rgb(109, 62, 70), rgb(189, 148, 148));
+  /* background-color: purple; */
+  box-shadow: 0.1rem 0.1rem 0.5rem 0.2rem grey;
+  border-radius: 1rem 0rem 0rem 1rem;
+  color: white;
+  z-index: 10;
+  transition: all 700ms ease-in-out;
+  /*box-shadow: 0.3rem 0.3rem 5rem 5rem black;*/
+}
+
+#divChange {
+  position: absolute;
+  top: 4rem;
+  left: -2.7rem;
+  width: 2.7rem;
+  height: 15rem;
+  border-radius: 1.5rem 0rem 0rem 1.5rem;
+  /* background-image: linear-gradient(rgb(109, 62, 70),rgb(189, 148, 148)); */
+  background-color: rgb(252, 252, 252);
+  transition: all 700ms ease-in-out;
+  box-shadow: 0.1rem 0.1rem 0.5rem 0.2rem grey;
+  /* border:1px solid black; */
+}
+
+#arrowDiv {
+  position: absolute;
+  top: 6.3rem;
+  left: 0.6rem;
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+#arrowDiv img {
+  width: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+}

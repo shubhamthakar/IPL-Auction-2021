@@ -1,0 +1,68 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+@font-face {
+   font-family: 'SMB';
+   src: local('Super Mario Bros.'),
+        url('fonts/Super Mario Bros.ttf') format('truetype');
+   font-style: normal;
+}
+body {
+	
+	
+	background-size: cover;
+	background-image: linear-gradient(
+            rgba(255, 255, 255, 0.01),
+            rgba(255, 255, 255, 0.01)
+          ),
+          url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max');
+		color: white;
+	padding: 15px;
+}
+
+#game {
+	height: 480px; width: 70%; position: absolute; left: 15%; top: 25%;
+	margin-left: -0px; margin-top: 0px; border: 5px solid #ffffff; overflow: hidden;
+}
+#world { 
+	margin: 0; padding: 0; height: 100%; width: 100%; position: absolute;
+	bottom: 0; left: 0; z-index: 0;
+}
+.gauge {
+	margin: 0; padding: 0; height: 50px; width: 70px; text-align: right; font-size: 2em;
+	font-weight: bold; position: absolute; top: 17px; right: 52px; z-index: 1000;
+	position: absolute; font-family: 'SMB';
+}
+.heading {
+	font-family: 'Press Start 2P', cursive;
+	text-align: center;
+	
+	font-weight: bold;
+	height: 5vh;
+	padding: 1rem;
+	margin: 0;
+	overflow: hidden;
+	/* background: linear-gradient(to bottom, #202020, #111119); */
+}
+.gaugeSprite {
+	margin: 0; padding: 0; z-index: 1000; position: absolute;
+}
+#coinNumber {
+	left: 0;
+}
+#liveNumber {
+	right: 52px;
+}
+#coin {
+	height: 32px; width: 32px; background-image : url('mario-objects.png');
+	background-position: 0 0; top: 15px; left: 70px;
+}
+#live {
+	height: 40px; width: 40px; background-image : url('mario-sprites.png');
+	background-position : 0 -430px; top: 12px; right: 8px;
+}
+.figure {
+	margin: 0; padding: 0; z-index: 99; position: absolute;
+}
+.matter {
+	margin: 0; padding: 0; z-index: 95; position: absolute; width: 32px; height: 32px;
+}
+

@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="robots" content="noindex">
+  <title>Team Selector</title>
+  <link rel="shortcut icon" href="{% static 'favicon.png' %}"  />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <!-- <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico"> -->
+  <link rel="mask-icon" type="" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+  <link rel="canonical" href="https://codepen.io/pen/?template=LYROppV">
+  <!-- Fonts -->
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Fonts End -->
+ 
+  <link rel="stylesheet" href="{% static 'homepagemediaquery.css' %}">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="{% static 'teamSelect.css' %}">
+    <link rel="shortcut icon" href="{% static 'cheemleft.png' %} " />
+
+  <style class="INLINE_PEN_STYLESHEET_ID">
+   
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* For the card that displays the score WHOLE CARD START */
+.score-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.wrapper2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 10px;
+}
+
+.total-score-box {
+  width: 5rem;
+  height: 3rem;
+  background-color: rgb(235, 235, 235);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1rem;
+  border-radius: 0.7rem;
+  padding-top:0.3rem;
+}
+/* For the card that displays the score WHOLE CARD END */
+
+.player-card2 {
+  padding: 1rem;
+ 
+  height: 70vh;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: rgb(245, 245, 245);
+  /* justify-content: center; */
+}
+.player-card3{
+  padding-top:1.5rem;;
+  display: grid;
+  grid-template-rows: repeat(4,1fr);
+  gap:1.1rem;
+}
+
+.rect-card {
+  display: grid;
+  border-radius: 8px;
+  height: 4rem;
+  align-items: center;
+  background: white;
+  color: black;
+  transition: all 200ms ease-in;
+}
+.rect-card:hover {
+  transform: scale(1.05,1.05);
+  
+}
+.rect-card-search {
+  display: grid;
+  border-radius: 8px;
+  height: 40px;
+  align-items: center;
+  padding-bottom: 1rem;
+  color:black;
+}
+h1{
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+h2 {
+  font-size: 1.4rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+  </style>
+
+  
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeConsoleRunner-7f4d47902dc785f30dedcac9c996b9f31d4dfcc33567cc48f0431bc918c2bf05.js"></script>
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-bb9a2ba1f03f6147732cb3cd52ac86c6b24524aa87a05ed0b726f11e46d7e277.js"></script>
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRuntimeErrors-4f205f2c14e769b448bcf477de2938c681660d5038bc464e3700256713ebe261.js"></script>
+
+</head>
+
+<body>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed:300,400,700"/>
+  <div class="headBody container-fluid">
+  
+      <a
+        href="{% url 'index' %}"
+        style="text-decoration: none; color: black; font-size: 1.7em"
+      >
+        <div class="backButton" style="color: white;font-size: 1.8rem;">
+          <?xml version="1.0"?>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xmlns:svgjs="http://svgjs.com/svgjs"
+            version="1.1"
+            width="50"
+            height="25"
+            x="0"
+            y="0"
+            viewBox="0 0 31.494 31.494"
+            style="enable-background: new 0 0 512 512"
+            xml:space="preserve"
+            class=""
+          >
+            <g>
+              <path
+                xmlns="http://www.w3.org/2000/svg"
+                d="M10.273,5.009c0.444-0.444,1.143-0.444,1.587,0c0.429,0.429,0.429,1.143,0,1.571l-8.047,8.047h26.554  c0.619,0,1.127,0.492,1.127,1.111c0,0.619-0.508,1.127-1.127,1.127H3.813l8.047,8.032c0.429,0.444,0.429,1.159,0,1.587  c-0.444,0.444-1.143,0.444-1.587,0l-9.952-9.952c-0.429-0.429-0.429-1.143,0-1.571L10.273,5.009z"
+                fill="#ffffff"
+                data-original="#1e201d"
+                class=""
+              />
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+            </g>
+          </svg>
+          Back
+        </div>
+      </a>
+      
+      
+    <div  style="padding: 1%;" ></div>
+  
+    <div class="homepagesearchbar-initial container-fluid" id="fixedDiv" style=" color: black; background: rgba( 255, 255, 255, 0.25 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 4px );
+-webkit-backdrop-filter: blur( 4px );
+border-radius: 10px; padding-bottom: 1.5rem;">
+      <input id="searchBar" type="text" class="form-control container-fluid" placeholder="Search Player..." autocomplete="off" style="height: 40px;">
+      <button type="button" id="addtag" name="addTag" onclick="checkName();" style="border: 0;
+  border-radius: 5px;
+  padding: 0.5rem;
+  color: white;
+  background-color: black;
+  margin-top: 0.2rem;">ADD</button>  
+    </div>
+ 
+    <div  style="padding: 1%;" ></div>
+    <div class="container-fluid" id="scoreDiv" style="
+              background: rgba(255, 255, 255, 0.25);
+              box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+              
+              
+              border-radius: 10px;
+            ">
+      <div class="container">
+        <h3 style="color:goldenrod">TOTAL SCORE</h3>
+      </div>
+
+      <div class="container" style="max-width: 10rem;">
+        <div style="border:0.2rem solid white;border-radius: 0.3rem 0.3rem 0.3rem 0.3rem;padding-top: 0.3rem;">
+          <h3 id="scoreTag" style="font-size: 40px;">0</h3>
+        </div>
+      </div>
+    <div  style="padding: 1%;" ></div>
+    <div class="container">
+     <h5 id="playerCountDiv">You have to select <span style="color:red">11</span> players.</h5>
+    </div>
+    </div>
+
+
+
+  </div>
+
+  <div  style="padding: 2%;" ></div>
+<!-- Div where players are added  -->
+  <div class="container-fluid backgroundPlayer" align="center" > 
+      <!-- <div class="row" id="playerDiv" style="width:90%; ">
+      </div> -->
+      <div style="max-width: 90%;padding-top: 3rem;" align="center" id="playerDiv" class="cardDiv"> 
+     
+      </div>
+  </div>
+
+  
+ <!-- JQuery -->
+
+ <!-- Search Bar autocomplete plugin -->
+<script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
+ <!-- JavaScript for homepage -->
+ 
+<!-- SnackBar Div -->
+  <div id="snackbar">Invalid Tag!</div>
+  <div id="snackbar2">Invalid Tag!</div>
+<!-- Player Choices Div -->
+<div id="playersSelectedDiv" style="
+        background-size: cover;
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.01),
+            rgba(0, 0, 0, 0.01)
+          ),
+          url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max');
+        color: white;
+      ">
+  <div id="divChange" onclick="changeChoseDivPos()"><div id="arrowDiv"><img src="/static/arrowImage2-removebg-preview.png" id="arrowHead"></div></div>
+  <h5 style="border-bottom: 1.5px solid white;padding: 0.5rem;  margin: 7.5px;color: goldenrod;">YOU CHOSE</h5>
+ 
+  <div  align="left" style="padding-left: 3.5rem;padding-top: 0.4rem" id="playersSelectedDiv2">
+    <p><span class="playerType">Batsman: </span>0 </p>
+    <p><span class="playerType">Bowler: </span>0 </p>
+    <p><span class="playerType">WK: </span>0 </p>
+    <p><span class="playerType">All-rounder: </span>0 </p>
+  </div>
+</div>
+
+  <!-- Rules Pop up Modal Starts -->
+    <div id="overlay">
+      <div
+        id="ruleDiv"
+        class="positionUp"
+        style="
+          background: rgba(255, 255, 255, 0.25);
+          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          border-radius: 10px;
+        "
+      >
+        <h1
+          style="
+            border-bottom: 1px solid white;
+            padding: 0.5rem;
+            color: goldenrod;
+          "
+        >
+          RULES
+        </h1>
+        <div
+          class="container"
+          align="left"
+          style="
+            max-width: 28rem;
+            line-height: 2rem;
+            padding-top: 0.4rem;
+            padding-left: 3rem;
+          "
+        >
+          <ol id="checkRuleColor" style="color: white">
+            <li>You have to choose min 3 and max 5 batsman.</li>
+            <li>You have to choose min 3 and max 5 bowler.</li>
+            <li>You have to choose min 1 and max 3 all-rounder.</li>
+            <li>
+              You have to choose min 1 and max 2 wk .(If you choose 2 wk then
+              the second wk is considered as a pure batsman.
+            </li>
+            <li>You have to choose min 1 and max 2 retro player</li>
+            <li>You have to choose min 1 and max 2 uncapped players</li>
+            <li>You can choose a max of 4 foriegn players.</li>
+          </ol>
+        </div>
+        <button
+          onclick="changeRuleBox('-');"
+          class="btn btn-primary btn-sm"
+          style="background-color: black; padding: 0.6rem 0.8rem"
+        >
+          CLOSE
+        </button>
+      </div>
+    </div>
+    <!-- Rules Pop up Modal Ends -->
+  <div  style="padding: 2%;" ></div>
+  <div class="extraDiv" style="
+        background-size: cover;
+        /* background-image: linear-gradient(white, 255, 255, 255, 0.5); */
+
+        background-image: linear-gradient(
+            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.1)
+          ),
+          url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max');
+        color: white;
+      ">
+  <div class="batting-section" style="margin-top:0rem" id="moveDown">
+    <!-- Batting score total -->
+      
+    <div class="batting-section" style="margin-top:0rem" id="moveDown">
+      <!-- Batting score total -->
+        
+      <div class="score-card">
+        <h1 style="color:goldenrod; font-size: 36px">Batting:</h1>
+        <div class="total-score-box" style="
+              background: rgba(255, 255, 255, 0.25);
+              box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+              backdrop-filter: blur(4px);
+              -webkit-backdrop-filter: blur(4px);
+              border-radius: 10px;
+            ">
+          <h1  id="total_bat_bonus">0</h1>
+        </div>
+      </div>
+      <!-- Batting score total ends-->
+  
+      <!-- Player Card Display Starts-->
+      <div class="wrapper2">
+        <!-- POWERPLAY Starts -->
+        <div class="">
+          <div class="score-card">
+            <h1>Powerplay:</h1>
+            <div class="total-score-box" style="
+              background: rgba(255, 255, 255, 0.25);
+              box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+              backdrop-filter: blur(4px);
+              -webkit-backdrop-filter: blur(4px);
+              border-radius: 10px;
+            ">
+              <h2 id="bat_ppl"> 0</h2>
+            </div>
+          </div>
+  
+          <div class="player-card2" style="
+              background: rgba(255, 255, 255, 0.25);
+              box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+              backdrop-filter: blur(4px);
+              -webkit-backdrop-filter: blur(4px);
+              border-radius: 10px;
+            ">
+            <div class="rect-card-search"  >
+              <div class="row" style="padding-left: 3rem;">
+              <div class="col-lg-8">
+                <input list="bat_pplList" onfocus="this.value=''" name="browser" class="catInput form-control" placeholder="Powerplay Batsman" disabled>
+                  <datalist id="bat_pplList">
+                    
+                </datalist>
+              </div>
+              <div class="col">
+                <button onclick="addPlayerCategory('bat_ppl',this)" class="categoryBtn">ADD</button>
+              </div>
+            </div>
+            </div>
+            <div class="player-card3">
+              <!-- <div class="rect-card Virat Kohli">
+                  <div class="row"  style="margin-left: 1rem;">
+                      <div class="col-lg-9">
+                        <h2 style="font-size:1.25rem; padding: 0.5rem">
+                            Krishnappa Gowtham-10
+                        </h2>
+                      </div>
+                    <div class="col-lg-3">
+                      <div  style="width:2.3rem;height:2.3rem; padding: 0.5rem">
+                        <img  class="crossImage" src="/static/closeButton.jpg" alt="Virat" draggable="false" style="width: 100%" onclick="remPlayerCategory('bat_ppl-Virat Kohli',this)"/>
+                      </div>
+                    </div>
+                  </div>
+              </div> -->
+            </div>
+           
+          </div>
+          <h5 style="color: rgb(255, 0, 0);" ><span style="color: rgb(229, 231, 114);"  > Maximum Players:</span> 4 </h5>
+         
+        </div>
+        <!-- Powerplay Ends -->
+  
+        <!-- Mid Over Starts -->
+        <div class="">
+          <div class="score-card">
+            <h1>Mid Over:</h1>
+            <div class="total-score-box" style="
+              background: rgba(255, 255, 255, 0.25);
+              box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+              backdrop-filter: blur(4px);
+              -webkit-backdrop-filter: blur(4px);
+              border-radius: 10px;
+            ">
+              <h2 id="bat_mid">0</h2>
+            </div>
+          </div>
+  
+          <div class="player-card2" style="
+              background: rgba(255, 255, 255, 0.25);
+              box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+              backdrop-filter: blur(4px);
+              -webkit-backdrop-filter: blur(4px);
+              border-radius: 10px;
+            ">
+            <div class="rect-card-search"  >
+              <div class="row" style="padding-left: 3rem;">
+              <div class="col-lg-8">
+                <input list="bat_midList" name="browser" class="catInput form-control" placeholder="Mid Over Batsman" disabled>
+                  <datalist id="bat_midList">
+  
+                </datalist>
+              </div>
+              <div class="col">
+                <button onclick="addPlayerCategory('bat_mid',this)" class="categoryBtn">ADD</button>
+              </div>
+            </div>
+            </div>
+            <div class="player-card3">
+            
+            
+            </div>
+           
+          </div>
+          <h5 style="color: rgb(255, 0, 0);" ><span style="color: rgb(229, 231, 114);"  > Maximum Players:</span> 4 </h5>
+        </div>
+        <!-- Mid Over Ends -->
+  
+        <!-- Death Starts -->
+        <div class="">
+          <div class="score-card">
+            <h1>Death:</h1>
+            <div class="total-score-box" style="
+              background: rgba(255, 255, 255, 0.25);
+              box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+              backdrop-filter: blur(4px);
+              -webkit-backdrop-filter: blur(4px);
+              border-radius: 10px;
+            ">
+              <h2 id="bat_death">0</h2>
+            </div>
+          </div>
+  
+          <div class="player-card2" style="
+              background: rgba(255, 255, 255, 0.25);
+              box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+              backdrop-filter: blur(4px);
+              -webkit-backdrop-filter: blur(4px);
+              border-radius: 10px;
+            ">
+            <div class="rect-card-search"  >
+              <div class="row" style="padding-left: 3rem;">
+              <div class="col-lg-8">
+                <input list="bat_deathList" name="browser" class="catInput form-control" placeholder="Death Batsman" disabled>
+                  <datalist id="bat_deathList">
+  
+                </datalist>
+              </div>
+              <div class="col">
+                <button onclick="addPlayerCategory('bat_death',this)" class="categoryBtn">ADD</button>
+              </div>
+            </div>
+            </div>
+            <div class="player-card3">
+           
+            
+            </div>
+           
+          </div>
+          <h5 style="color: rgb(255, 0, 0);" ><span style="color: rgb(229, 231, 114);"  > Maximum Players:</span> 2 </h5>
+        </div>
+        <!-- Death Ends -->
+      </div>
+      <!-- Player Card Display Ends-->
+    </div>
+    <!-- Batting Section Ends -->
+    <div  style="padding: 2%;" ></div>
+  
+    <!-- Bowling Section Starts-->
+    <div class="bowling-section" style="margin-top: 30px">
+      <!-- Batting score total -->
+      <div class="score-card">
+        <h1 style="color:goldenrod; font-size: 36px">Bowling:</h1>
+        <div class="total-score-box" style="
+              background: rgba(255, 255, 255, 0.25);
+              box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+              backdrop-filter: blur(4px);
+              -webkit-backdrop-filter: blur(4px);
+              border-radius: 10px;
+            ">
+          <h1  id="total_bow_bonus">0</h1>
+        </div>
+      </div>
+      <!-- Batting score total ends-->
+      <!-- Player Card Display Starts-->
+      <div class="wrapper2">
+        <!-- Powerplay Starts -->
+        <div class="">
+          <div class="score-card">
+            <h1>Powerplay:</h1>
+            <div class="total-score-box" style="
+              background: rgba(255, 255, 255, 0.25);
+              box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+              backdrop-filter: blur(4px);
+              -webkit-backdrop-filter: blur(4px);
+              border-radius: 10px;
+            ">
+              <h2 id="bow_ppl">0</h2>
+            </div>
+          </div>
+  
+          <div class="player-card2" style="
+              background: rgba(255, 255, 255, 0.25);
+              box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+              backdrop-filter: blur(4px);
+              -webkit-backdrop-filter: blur(4px);
+              border-radius: 10px;
+            ">
+            <div class="rect-card-search"  >
+              <div class="row" style="padding-left: 3rem;">
+              <div class="col-lg-8">
+                <input list="bow_pplList" name="browser" class="catInput form-control" placeholder="Powerplay Bowler" disabled>
+                  <datalist id="bow_pplList">
+  
+                </datalist>
+              </div>
+              <div class="col">
+                <button onclick="addPlayerCategory('bow_ppl',this)" class="categoryBtn">ADD</button>
+              </div>
+            </div>
+            </div>
+            <div class="player-card3">
+          
+            
+            </div>
+           
+          </div>
+          <h5 style="color: rgb(255, 0, 0);" ><span style="color: rgb(229, 231, 114);"  > Maximum Players:</span> 3 </h5>
+        </div>
+        <!-- Powerplay Ends -->
+  
+        <!-- Mid Over Starts -->
+        <div class="">
+          <div class="score-card">
+            <h1>Mid Overs:</h1>
+            <div class="total-score-box" style="
+              background: rgba(255, 255, 255, 0.25);
+              box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+              backdrop-filter: blur(4px);
+              -webkit-backdrop-filter: blur(4px);
+              border-radius: 10px;
+            ">
+              <h2 id="bow_mid">0</h2>
+            </div>
+          </div>
+  
+          <div class="player-card2" style="
+              background: rgba(255, 255, 255, 0.25);
+              box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+              backdrop-filter: blur(4px);
+              -webkit-backdrop-filter: blur(4px);
+              border-radius: 10px;
+            ">
+            <div class="rect-card-search"  >
+              <div class="row" style="padding-left: 3rem;">
+              <div class="col-lg-8">
+                <input list="bow_midList" name="browser" class="catInput form-control" placeholder="Mid Over Bowler" disabled>
+                  <datalist id="bow_midList">
+  
+                </datalist>
+              </div>
+              <div class="col">
+                <button onclick="addPlayerCategory('bow_mid',this)" class="categoryBtn">ADD</button>
+              </div>
+            </div>
+            </div>
+            <div class="player-card3">
+           
+            
+            </div>
+           
+          </div>
+          <h5 style="color: rgb(255, 0, 0);" ><span style="color: rgb(229, 231, 114);"  > Maximum Players:</span> 3 </h5>
+        </div>
+        <!-- Mid Over Ends -->
+  
+        <!-- Death Starts -->
+        <div class="">
+          <div class="score-card">
+            <h1>Death:</h1>
+            <div class="total-score-box" style="
+              background: rgba(255, 255, 255, 0.25);
+              box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+              backdrop-filter: blur(4px);
+              -webkit-backdrop-filter: blur(4px);
+              border-radius: 10px;
+            ">
+              <h2 id="bow_death">0</h2>
+            </div>
+          </div>
+  
+          <div class="player-card2" style="
+              background: rgba(255, 255, 255, 0.25);
+              box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+              backdrop-filter: blur(4px);
+              -webkit-backdrop-filter: blur(4px);
+              border-radius: 10px;
+            ">
+            <div class="rect-card-search"  >
+              <div class="row" style="padding-left: 3rem;">
+              <div class="col-lg-8">
+                <input list="bow_deathList" name="browser" class="catInput form-control" placeholder="Death Bowler" disabled>
+                  <datalist id="bow_deathList">
+                    
+                </datalist>
+              </div>
+              <div class="col">
+                <button onclick="addPlayerCategory('bow_death',this)" class="categoryBtn">ADD</button>
+              </div>
+            </div>
+            </div>
+            <div class="player-card3">
+            
+            
+            </div>
+           
+          </div>
+          <h5 style="color: rgb(255, 0, 0);" ><span style="color: rgb(229, 231, 114);"  > Maximum Players:</span> 2 </h5>
+        </div>
+        <!-- Death Ends -->
+      </div>
+      <br><br>
+      <div class="score-card">
+        <h1 style="color:goldenrod; font-size: 36px">Total Score:</h1>
+        <div class="total-score-box" style="
+              background: rgba(255, 255, 255, 0.25);
+              box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+              backdrop-filter: blur(4px);
+              -webkit-backdrop-filter: blur(4px);
+              border-radius: 10px;
+            ">
+          <h1  id="total_score">0</h1>
+        </div>
+      </div>
+      <!-- Player Card Display Ends-->
+  </div>
+  </div>
+  
+ 
+    <div class="footer" id="foo"></div>
+  <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+  <script  src="https://cdpn.io/cp/internal/boomboom/pen.js?key=pen.js-e4f7a928-6d34-df97-6fac-c1cba0c96cfb"></script>
+
+  <!-- script tag to access variables  -->
+
+
+  <script>
+    var playerList = JSON.parse('{{ json_players | escapejs }}')
+  </script>
+  <!-- js file for team selection card added dynamically -->
+  <script src="{% static 'teamSelect.js' %}"></script>
+
+</body>
+
+</html>
+<!-- search-ms:displayname=Search%20Results%20in%20OS%20(C%3A)&crumb=location:C%3A%5C\Python -->
+
+
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="{% static 'favicon.png' %}"  />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'cheem.css' %}" />
+    <title>Cheemrboard</title>
+<style type="text/css">
+  {% for team in teams %}
+  .content > ul > li:nth-child({{ forloop.counter }}):hover {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.11);
+  background-image: linear-gradient(to right, {{team.2}});
+}
+{% endfor %}
+</style>
+  </head>
+  <body>
+    <div class="center-align-box">
+      <div class="box">
+        <div class="leaderboard">
+          <!-- Wrapper Starts -->
+          <div class="wrapper">
+            <div class="cheem-left rotate">
+              <img
+                src="{% static 'cheemleft.png' %}"
+                alt=""
+                style="width: 55px; height: 55px"
+              />
+            </div>
+            <h1 style="border-bottom: 2px solid goldenrod; font-size: 39px">
+              Cheemrboard
+            </h1>
+            <div class="cheem-right rotate">
+              <img
+                src="{% static 'cheemright.png' %}"
+                alt=""
+                style="width: 55px; height: 55px"
+              />
+            </div>
+          </div>
+          <!-- Wrapper Ends -->
+
+          <!-- Content Starts -->
+          <div class="content">
+            <ul style="list-style: none">
+
+              {% for team in teams %}
+              <li>
+                <div class="card">
+                  <div class="left"><h2>{{ forloop.counter }}</h2></div>
+                  <div class="center"><h1 style="font-size: 36px">{{ team.1 }}</h1></div>
+                  <div class="right"><h2 style="font-size: 26px">{{ team.0 }}</h2></div>
+                </div>
+              </li>
+              {% endfor %}
+
+            </ul>
+              
+          <!-- Content Ends -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

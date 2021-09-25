@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="{% static 'favicon.png' %}"  />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Link for CSS file -->
+    <link rel="stylesheet" href="{% static 'login.css' %}" />
+    <!-- <link rel="stylesheet" href="../static/login.css" /> -->
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Login Page</title>
+    <style>
+      .img {
+        height: 10px;
+        width: 10px;
+      }
+
+      /*login button start*/
+      .wrapper {
+        height: 3rem;
+        width: 5rem;
+        background-color: white;
+        border-radius: 6px;
+        margin-left: 5rem;
+        margin-top: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: translate(-50%, -50%);
+      }
+
+      .link_wrapper {
+        position: relative;
+      }
+
+      #loginbutton {
+        display: block;
+        width: 5rem;
+        height: 3rem;
+        line-height: 3rem;
+        font-weight: bold;
+        text-decoration: none;
+        background: mediumpurple;
+        text-align: center;
+        color: black;
+        letter-spacing: 1px;
+        border-radius: 6px;
+        transition: all 0.35s;
+      }
+
+      .icon {
+        width: 50px;
+        height: 50px;
+        border: 3px solid transparent;
+        position: absolute;
+        transform: rotate(45deg);
+        right: 0;
+        top: 0;
+        z-index: -1;
+        transition: all 0.35s;
+      }
+
+      .icon svg {
+        width: 30px;
+        position: absolute;
+        top: calc(50% - 15px);
+        left: calc(50% - 15px);
+        transform: rotate(-45deg);
+        fill: #2ecc71;
+        transition: all 0.35s;
+      }
+
+      #loginbutton:hover {
+        width: 10rem;
+        border: 3px solid #2ecc71;
+        background: white;
+        color: #2ecc71;
+      }
+
+      #loginbutton:hover + .icon {
+        border: 3px solid #2ecc71;
+        right: -25%;
+      }
+      /*login button end*/
+    </style>
+  </head>
+  <body
+    style="
+      background-image: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max');
+      background-size: cover;
+    "
+  >
+    <div class="nav">
+      <a
+        href="{% url 'index' %}"
+        style="text-decoration: none; color: black; font-size: 1.7em"
+      >
+        <div class="backButton" style="color: white">
+          <?xml version="1.0"?>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xmlns:svgjs="http://svgjs.com/svgjs"
+            version="1.1"
+            width="50"
+            height="25"
+            x="0"
+            y="0"
+            viewBox="0 0 31.494 31.494"
+            style="enable-background: new 0 0 512 512"
+            xml:space="preserve"
+            class=""
+          >
+            <g>
+              <path
+                xmlns="http://www.w3.org/2000/svg"
+                d="M10.273,5.009c0.444-0.444,1.143-0.444,1.587,0c0.429,0.429,0.429,1.143,0,1.571l-8.047,8.047h26.554  c0.619,0,1.127,0.492,1.127,1.111c0,0.619-0.508,1.127-1.127,1.127H3.813l8.047,8.032c0.429,0.444,0.429,1.159,0,1.587  c-0.444,0.444-1.143,0.444-1.587,0l-9.952-9.952c-0.429-0.429-0.429-1.143,0-1.571L10.273,5.009z"
+                fill="#ffffff"
+                data-original="#1e201d"
+                class=""
+              />
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+            </g>
+          </svg>
+          Back
+        </div>
+      </a>
+    </div>
+
+    <!-- Login form to be added while adding templates -->
+    <form method="post" action="">
+      {% csrf_token %}
+      <div class="container">
+        <div class="login-box">
+          <h1
+            style="
+              margin-top: 1em;
+              font-size: 40px;
+              color: white;
+              padding-bottom: 5px;
+              border-bottom: 2px solid goldenrod;
+            "
+          >
+            Login
+          </h1>
+
+          <!-- Room id input box -->
+          <!-- <label for="" style="margin-top: 1em">Enter room id</label>
+          <input
+            name="room"
+            type="text"
+            id="email"
+            placeholder="Enter room id"
+            style="background: none; border: none; outline: none"
+          /> -->
+          <label for="inp" class="inp">
+            <input
+              name="room"
+              type="text"
+              autocomplete="off"
+              id="inp"
+              pattern=".{3,}"
+              placeholder="Enter Room Id"
+              required
+              style="color: white"
+            />
+            <svg
+              width="200px"
+              height="18px"
+              viewBox="0 0 280 18"
+              class="border"
+              style="transform: translateX(2.7rem)"
+            >
+              <path
+                d="M0,12 L223.166144,12 C217.241379,12 217.899687,12 225.141066,12 C236.003135,12 241.9279,12 249.827586,12 C257.727273,12 264.639498,12 274.514107,12 C281.097179,12 281.755486,12 276.489028,12"
+              ></path>
+            </svg>
+            <svg width="14px" height="12px" viewBox="0 0 14 12" class="check">
+              <path d="M1 7 5.5 11 L13 1"></path>
+            </svg>
+            <!-- <svg
+              width="14px"
+              height="12px"
+              viewBox="0 0 14 12"
+              class="check"
+              style="color: goldenrod"
+            >
+              <path d="M1 7 5.5 11 L13 1"></path>
+            </svg> -->
+          </label>
+
+          <!-- Password box -->
+          <!-- <label for="" style="margin-top: 1em">Enter Password</label> -->
+          <!-- <input name="password" type="password" placeholder="Enter password" /> -->
+          <label for="inp" class="inp" style="padding-top: 0; margin-top: 0">
+            <input
+              name="password"
+              type="password"
+              id="inp"
+              placeholder="Enter Password"
+              pattern=".{6,}"
+              required
+            />
+            <svg
+              width="200px"
+              height="18px"
+              viewBox="0 0 280 18"
+              class="border"
+              style="transform: translateX(2.7rem)"
+            >
+              <path
+                d="M0,12 L223.166144,12 C217.241379,12 217.899687,12 225.141066,12 C236.003135,12 241.9279,12 249.827586,12 C257.727273,12 264.639498,12 274.514107,12 C281.097179,12 281.755486,12 276.489028,12"
+              ></path>
+            </svg>
+            <svg width="14px" height="12px" viewBox="0 0 14 12" class="check">
+              <path d="M1 7 5.5 11 L13 1"></path>
+            </svg>
+          </label>
+
+          <!-- Select Team dropdown start -->
+          <div class="" style="display: flex; justify-items: center">
+            <div style="display: flex; flex-direction: column">
+              <label for="" style="margin-top: 1em">Select Team</label>
+              <select
+                name="team"
+                id="password"
+                style="
+                  padding: 5px;
+                  border: 1px white solid;
+                  border-radius: 4px;
+                  background: none;
+                  outline: none;
+                  margin-top: 5px;
+                  color: white;
+                "
+                onchange="setImage(this);"
+              >
+                <option
+                  style="background-color: transparent"
+                  value="MI"
+                  id="../static/CHEEMSCAP/CheemsMI-removebg-preview.png"
+                >
+                  <h1>MI</h1>
+                </option>
+                <option
+                  value="CSK"
+                  id="../static/CHEEMSCAP/CHEEMSCSK.jpg-removebg-preview.png"
+                  style="background-color: linear-gradient(red, blue)"
+                >
+                  CSK
+                </option>
+                <option
+                  value="SRH"
+                  id="../static/CHEEMSCAP/CHEEMSSRH-removebg-preview.png"
+                >
+                  SRH
+                </option>
+                <option
+                  value="DC"
+                  id="../static/CHEEMSCAP/CHEEMSDC-removebg-preview.png"
+                >
+                  DC
+                </option>
+                <option
+                  value="RR"
+                  id="../static/CHEEMSCAP/CHEEMSRR.jpg-removebg-preview.png"
+                >
+                  RR
+                </option>
+                <option
+                  value="RCB"
+                  id="../static/CHEEMSCAP/CHEEMSRCB-removebg-preview.png"
+                >
+                  RCB
+                </option>
+                <option
+                  value="KKR"
+                  id="../static/CHEEMSCAP/CHEEMSKKR.jpg-removebg-preview.png"
+                >
+                  KKR
+                </option>
+                <option
+                  value="PK"
+                  id="../static/CHEEMSCAP/CHEEMSKXIP-removebg-preview.png"
+                >
+                  PK
+                </option>
+              </select>
+            </div>
+            <img
+              src="../static/CHEEMSCAP/CheemsMI-removebg-preview.png"
+              alt=""
+              style="height: 80px; margin-top: 10px; margin-left: 10px"
+              name="image-swap"
+            />
+          </div>
+          <!-- Select Team dropdown end -->
+          <!-- Submit button start -->
+
+          <!-- Dropdown Starts -->
+
+          <!-- Dropdown Ends -->
+
+          <button
+            style="
+              height: 2rem;
+              width: 3rem;
+              background-color: white;
+              border-radius: 6px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin-top: 10px;
+              color: white;
+            "
+            type="submit"
+          >
+            <div class="wrapper">
+              <div class="link_wrapper">
+                <a id="loginbutton" href='{% url "signin"%}'><h4>Login</h4></a>
+                <div class="icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 268.832 268.832"
+                  >
+                    <path
+                      d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </button>
+          <!-- Submit button end -->
+          {% for msg in messages %}
+          <p style="color: red; padding-bottom: 1rem">{{msg}}</p>
+          {% endfor %}
+        </div>
+      </div>
+    </form>
+
+    <script>
+      function setImage(select) {
+        var image = document.getElementsByName("image-swap")[0];
+        image.src = select.options[select.selectedIndex].id;
+      }
+    </script>
+  </body>
+</html>

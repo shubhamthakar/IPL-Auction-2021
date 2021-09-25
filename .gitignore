@@ -1,0 +1,9 @@
+#Pip files
+ipl/Pipfile
+ipl/Pipfile.lock
+
+#Migrations
+ipl/app/migrations
+
+#database
+ipl/db.sqlite3

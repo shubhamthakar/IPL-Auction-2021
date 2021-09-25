@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="robots" content="noindex" />
+    <link rel="shortcut icon" href="{% static 'favicon.png' %}"  />
+    <title>Calculator</title>
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico"
+    /> -->
+    <link
+      rel="mask-icon"
+      type=""
+      href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg"
+      color="#111"
+    />
+    <link rel="canonical" href="https://codepen.io/pen/?template=LYROppV" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="{% static 'homepagemediaquery.css' %}" />
+    <meta name="robots" content="noindex" />
+    <link rel="stylesheet" href="{% static 'calcLogin.css' %}" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- End Fonts -->
+
+    <style class="INLINE_PEN_STYLESHEET_ID">
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .BlockUIConfirm {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100vh;
+        width: 100vw;
+        z-index: 50;
+        color: black;
+      }
+
+      .blockui-mask {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #333;
+        opacity: 0.4;
+      }
+
+      .RowDialogBody {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        max-width: 400px;
+        opacity: 1;
+        background-color: white;
+        border-radius: 4px;
+      }
+
+      .RowDialogBody > div:not(.confirm-body) {
+        padding: 8px 10px;
+      }
+
+      .confirm-header {
+        width: 100%;
+        border-radius: 4px 4px 0 0;
+        font-size: 13pt;
+        font-weight: bold;
+        margin: 0;
+      }
+      /* 
+      .row-dialog-hdr-success {
+        border-top: 4px solid #5cb85c;
+        border-bottom: 1px solid transparent;
+      } */
+
+      .row-dialog-hdr-info {
+        border-top: 4px solid #5bc0de;
+        border-bottom: 1px solid transparent;
+      }
+
+      .confirm-body {
+        border-top: 1px solid #ccc;
+        padding: 20px 10px;
+        /* border-bottom: 1px solid #ccc; */
+      }
+
+      .confirm-btn-panel {
+        width: 100%;
+      }
+      .row-dialog-btn {
+        cursor: pointer;
+      }
+
+      .btn-naked {
+        background-color: transparent;
+      }
+
+      /* For the card that displays the score WHOLE CARD START */
+      .score-card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .wrapper2 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin: 10px;
+      }
+
+      .total-score-box {
+        width: 5rem;
+        height: 3rem;
+        background-color: rgb(235, 235, 235);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 1rem;
+        border-radius: 0.7rem;
+        padding-top: 0.3rem;
+      }
+
+      .total-score-box1 {
+        width: 7rem;
+        height: 3rem;
+        background-color: rgb(235, 235, 235);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 1rem;
+      }
+
+      /* For the card that displays the score WHOLE CARD END */
+
+      .player-card2 {
+        padding: 1rem;
+
+        height: 70vh;
+        border-radius: 1rem;
+        text-align: center;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        background-color: rgb(245, 245, 245);
+        /* justify-content: center; */
+      }
+      .player-card3 {
+        padding-top: 1.5rem;
+        display: grid;
+        grid-template-rows: repeat(4, 1fr);
+        gap: 1.1rem;
+      }
+
+      .rect-card {
+        display: grid;
+        border-radius: 8px;
+        height: 4rem;
+        align-items: center;
+        background: white;
+        color: black;
+        transition: all 200ms ease-in;
+      }
+      .rect-card:hover {
+        transform: scale(1.05, 1.05);
+      }
+      .rect-card-search {
+        display: grid;
+        border-radius: 8px;
+        height: 40px;
+        align-items: center;
+        padding-bottom: 1rem;
+        color: black;
+      }
+      h1 {
+        font-size: 1.7rem;
+        font-weight: bold;
+      }
+      h2 {
+        font-size: 1.4rem;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .submitBtn {
+        transform: translate(6%, -10%);
+        width: 8rem;
+        height: 3.25rem;
+        font-size: 20px;
+        font-weight: lighter;
+        /* border: 1px solid purple; */
+
+        background-color: white;
+        color: purple;
+
+        transition: color 0.3s ease-out, box-shadow 0.2s ease-in,
+          border 0.3s ease-out;
+      }
+      .submitBtn::before {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: 0px;
+
+        clip-path: circle(0% at 0% 100%);
+
+        background-color: rgb(107, 0, 128);
+        width: 100%;
+        height: 100%;
+
+        transition: clip-path 0.25s ease-in;
+        z-index: -1;
+      }
+      .submitBtn:hover::before {
+        clip-path: circle(80% at 0% 100%);
+      }
+      .submitBtn::after {
+        content: "";
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        background-color: rgb(107, 0, 128);
+        width: 100%;
+        height: 100%;
+        clip-path: circle(0% at 100% 0%);
+        transition: clip-path 0.25s ease-in;
+        z-index: -1;
+      }
+      .submitBtn:hover::after {
+        clip-path: circle(80% at 100% 0%);
+      }
+
+      .submitBtn:hover {
+        box-shadow: 10px 10px 40px purple;
+        color: rgb(255, 255, 255);
+
+        cursor: pointer;
+        /* border: 1.5px solid white; */
+      }
+      .submitBtn:active {
+        font-weight: bold;
+        background-color: purple;
+        color: goldenrod;
+        box-shadow: 8px 8px 100px purple;
+
+        /* border: 2px solid white; */
+      }
+    </style>
+
+    <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeConsoleRunner-7f4d47902dc785f30dedcac9c996b9f31d4dfcc33567cc48f0431bc918c2bf05.js"></script>
+    <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-bb9a2ba1f03f6147732cb3cd52ac86c6b24524aa87a05ed0b726f11e46d7e277.js"></script>
+    <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRuntimeErrors-4f205f2c14e769b448bcf477de2938c681660d5038bc464e3700256713ebe261.js"></script>
+    <link rel="shortcut icon" href="{% static 'cheemleft.png' %} " />
+  </head>
+
+  <body>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed:300,400,700"
+    />
+<!-- Submit UI Link -->
+      {% for msg in messages %}          
+          <div
+            id="BlockUIConfirm"
+            class="BlockUIConfirm"
+            style="display: block;"
+          >
+            <div class="blockui-mask"></div>
+            <div
+              class="RowDialogBody"
+              style="
+                background: rgba(255, 255, 255, 0.25);
+                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-radius: 10px;
+                color: white;
+              "
+            >
+              <div class="confirm-header row-dialog-hdr-success">
+                <h2 style="color: rgb(218, 32, 32)">Submission Cancelled</h2>
+              </div>
+              <div class="confirm-body">
+                {{msg}}
+              </div>
+              <div class="confirm-btn-panel pull-right">
+                <div class="btn-holder pull-right">
+                  <a href="{% url 'waitingpg' %}"><button
+                    class="row-dialog-btn btn btn-success"
+                    style="background-color: black; border: black"
+                    onclick="$('#BlockUIConfirm').hide();"
+                  >Go to CheemrBoard</button></a>
+                </div>
+              </div>
+            </div>
+          </div>
+      {% endfor %}
+    <!-- Navbar Score Display starts -->
+    <div class="headBody container-fluid">
+      <!-- Back Button Starts-->
+      <a href="{% url 'dashboard' %}"
+        ><div class="backButton" style="color: white;font-size: 1.8rem;">
+          <?xml version="1.0"?>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xmlns:svgjs="http://svgjs.com/svgjs"
+            version="1.1"
+            width="50"
+            height="25"
+            x="0"
+            y="0"
+            viewBox="0 0 31.494 31.494"
+            style="enable-background: new 0 0 512 512"
+            xml:space="preserve"
+            class=""
+          >
+            <g>
+              <path
+                xmlns="http://www.w3.org/2000/svg"
+                d="M10.273,5.009c0.444-0.444,1.143-0.444,1.587,0c0.429,0.429,0.429,1.143,0,1.571l-8.047,8.047h26.554  c0.619,0,1.127,0.492,1.127,1.111c0,0.619-0.508,1.127-1.127,1.127H3.813l8.047,8.032c0.429,0.444,0.429,1.159,0,1.587  c-0.444,0.444-1.143,0.444-1.587,0l-9.952-9.952c-0.429-0.429-0.429-1.143,0-1.571L10.273,5.009z"
+                fill="#ffffff"
+                data-original="#1e201d"
+                class=""
+              />
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+              <g xmlns="http://www.w3.org/2000/svg"></g>
+            </g>
+          </svg>
+
+          Back
+        </div></a
+      >
+      <div style="padding: 1%"></div>
+      <!-- Back Button Starts-->
+
+      <!-- <div  style="padding: 1%;" ></div> -->
+      <!-- Navbar Score Display Ends-->
+      <div
+        class="container-fluid"
+        id="scoreDiv"
+        style="
+          background: rgba(255, 255, 255, 0.25);
+          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+          backdrop-filter: blur(2.5px);
+          -webkit-backdrop-filter: blur(2.5px);
+          border-radius: 10px;
+        "
+      >
+        <div class="container">
+          <h3 style="color: goldenrod">YOUR SCORE</h3>
+        </div>
+
+        <div class="container" style="max-width: 10rem">
+          <div
+            style="
+              border: 0.2rem solid;
+              border-radius: 0.3rem 0.3rem 0.3rem 0.3rem;
+              padding-top: 0.3rem;
+            "
+          >
+            <h1 id="scoreTag" style="font-size: 40px; color: white">0</h1>
+          </div>
+        </div>
+        <div style="padding: 1%"></div>
+        <div class="container">
+          <h5 id="playerCountDiv">
+            You have to select
+            <span style="color: #e50914">11</span> players.
+          </h5>
+        </div>
+      </div>
+      <!-- Navbar Score Display Ends-->
+    </div>
+    <!-- Navbar Score Display ends -->
+
+    <div style="padding: 2%"></div>
+
+    <!-- Div where players are added starts -->
+    <div class="container-fluid" align="center">
+      <div
+        style="max-width: 90%; padding-top: 3rem"
+        align="center"
+        id="playerDiv"
+        class="cardDiv"
+      ></div>
+    </div>
+    <!-- Div where players are added ends -->
+
+    <!-- SnackBar Div -->
+    <div id="snackbar">Invalid Tag!</div>
+    <div id="snackbar2">Invalid Tag!</div>
+
+    <!-- Side Popup Start -->
+    <div
+      id="playersSelectedDiv"
+      style="
+        background-size: cover;
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.01),
+            rgba(0, 0, 0, 0.01)
+          ),
+          url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max');
+        color: white;
+      "
+    >
+      <div id="divChange" onclick="changeChoseDivPos()">
+        <div id="arrowDiv">
+          <img src="/static/arrowImage2-removebg-preview.png" id="arrowHead" />
+        </div>
+      </div>
+      <h5
+        style="border-bottom: 1.5px solid white; padding: 0.5rem; margin: 7.5px;color: goldenrod;"
+      >
+        YOU CHOSE
+      </h5>
+
+      <div
+        align="left"
+        style="padding-left: 3.5rem; padding-top: 0.3rem;line-height: 1.3rem;"
+        id="playersSelectedDiv2"
+      >
+        <p><span class="playerType">Batsman: </span>0</p>
+        <p><span class="playerType">Bowler: </span>0</p>
+        <p><span class="playerType">WK: </span>0</p>
+        <p><span class="playerType">All-rounder: </span>0</p>
+      </div>
+    </div>
+    <!-- Side Popup Close -->
+
+    <!-- Rules Pop up Modal Starts -->
+    <div id="overlay">
+      <div
+        id="ruleDiv"
+        class="positionUp"
+        style="
+          background: rgba(255, 255, 255, 0.25);
+          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          border-radius: 10px;
+        "
+      >
+        <h1
+          style="
+            border-bottom: 1px solid white;
+            padding: 0.5rem;
+            color: goldenrod;
+          "
+        >
+          RULES
+        </h1>
+        <div
+          class="container"
+          align="left"
+          style="
+            max-width: 28rem;
+            line-height: 2rem;
+            padding-top: 0.4rem;
+            padding-left: 3rem;
+          "
+        >
+          <ol id="checkRuleColor" style="color: white">
+            <li>You have to choose min 3 and max 5 batsman.</li>
+            <li>You have to choose min 3 and max 5 bowler.</li>
+            <li>You have to choose min 1 and max 3 all-rounder.</li>
+            <li>
+              You have to choose min 1 and max 2 wk .(If you choose 2 wk then
+              the second wk is considered as a pure batsman.
+            </li>
+            <li>You have to choose min 1 and max 2 retro player</li>
+            <li>You have to choose min 1 and max 2 uncapped players</li>
+            <li>You can choose a max of 4 foriegn players.</li>
+          </ol>
+        </div>
+        <button
+          onclick="changeRuleBox('-');"
+          class="btn btn-primary btn-sm"
+          style="background-color: black; padding: 0.6rem 0.8rem"
+        >
+          CLOSE
+        </button>
+      </div>
+    </div>
+    <!-- Rules Pop up Modal Ends -->
+
+    <!-- Bonus section Start -->
+    <div style="padding: 2%"></div>
+    <div
+      class="extraDiv"
+      style="
+        background-size: cover;
+        /* background-image: linear-gradient(white, 255, 255, 255, 0.5); */
+
+        background-image: linear-gradient(
+            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.1)
+          ),
+          url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max');
+        color: white;
+      "
+    >
+      <div class="batting-section" style="margin-top: 0rem" id="moveDown">
+        <!-- Batting score total -->
+        <div class="score-card">
+          <h1 style="color: goldenrod; font-size: 36px">Batting:</h1>
+          <div
+            class="total-score-box"
+            style="
+              background: rgba(255, 255, 255, 0.25);
+              box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+              backdrop-filter: blur(4px);
+              -webkit-backdrop-filter: blur(4px);
+              border-radius: 10px;
+            "
+          >
+            <h1 id="total_bat_bonus">0</h1>
+          </div>
+        </div>
+        <!-- Batting score total ends-->
+
+        <!-- Player Card Display Starts-->
+        <div class="wrapper2">
+          <!-- POWERPLAY Starts -->
+          <div class="">
+            <div class="score-card">
+              <h1 style="color: white">Powerplay:</h1>
+              <div
+                class="total-score-box"
+                style="
+                  background: rgba(255, 255, 255, 0.25);
+                  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                  backdrop-filter: blur(4px);
+                  -webkit-backdrop-filter: blur(4px);
+                  border-radius: 10px;
+                "
+              >
+                <h2 id="bat_ppl">0</h2>
+              </div>
+            </div>
+
+            <div
+              class="player-card2"
+              style="
+                background: rgba(255, 255, 255, 0.25);
+                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+                border-radius: 10px;
+              "
+            >
+              <div class="rect-card-search">
+                <div class="row" style="padding-left: 3rem">
+                  <div class="col-lg-8">
+                    <input
+                      list="bat_pplList"
+                      name="browser"
+                      class="catInput form-control"
+                      placeholder="Powerplay Batsman"
+                      disabled
+                    />
+                    <datalist id="bat_pplList"> </datalist>
+                  </div>
+                  <div class="col">
+                    <button
+                      onclick="addPlayerCategory('bat_ppl',this)"
+                      class="categoryBtn"
+                    >
+                      ADD
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="player-card3"></div>
+            </div>
+            <h5 style="color: rgb(255, 0, 0);" ><span style="color: rgb(229, 231, 114);"  > Maximum Players:</span> 4 </h4>
+          </div>
+          <!-- Powerplay Ends -->
+
+          <!-- Mid Over Starts -->
+          <div class="">
+            <div class="score-card">
+              <h1>Mid Over:</h1>
+              <div
+                class="total-score-box"
+                style="
+                  background: rgba(255, 255, 255, 0.25);
+                  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                  backdrop-filter: blur(4px);
+                  -webkit-backdrop-filter: blur(4px);
+                  border-radius: 10px;
+                "
+              >
+                <h2 id="bat_mid">0</h2>
+              </div>
+            </div>
+
+            <div
+              class="player-card2"
+              style="
+                background: rgba(255, 255, 255, 0.25);
+                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+                border-radius: 10px;
+              "
+            >
+              <div class="rect-card-search">
+                <div class="row" style="padding-left: 3rem">
+                  <div class="col-lg-8">
+                    <input
+                      list="bat_midList"
+                      name="browser"
+                      class="catInput form-control"
+                      placeholder="Mid Over Batsman"
+                      disabled
+                    />
+                    <datalist id="bat_midList"> </datalist>
+                  </div>
+                  <div class="col">
+                    <button
+                      onclick="addPlayerCategory('bat_mid',this)"
+                      class="categoryBtn"
+                    >
+                      ADD
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="player-card3"></div>
+            </div>
+            <h5 style="color: rgb(255, 0, 0);" ><span style="color: rgb(229, 231, 114);"  > Maximum Players:</span> 4 </h5>
+          </div>
+          <!-- Mid Over Ends -->
+
+          <!-- Death Starts -->
+          <div class="">
+            <div class="score-card">
+              <h1>Death:</h1>
+              <div
+                class="total-score-box"
+                style="
+                  background: rgba(255, 255, 255, 0.25);
+                  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                  backdrop-filter: blur(4px);
+                  -webkit-backdrop-filter: blur(4px);
+                  border-radius: 10px;
+                "
+              >
+                <h2 id="bat_death">0</h2>
+              </div>
+            </div>
+
+            <div
+              class="player-card2"
+              style="
+                background: rgba(255, 255, 255, 0.25);
+                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+                border-radius: 10px;
+              "
+            >
+              <div class="rect-card-search">
+                <div class="row" style="padding-left: 3rem">
+                  <div class="col-lg-8">
+                    <input
+                      list="bat_deathList"
+                      name="browser"
+                      class="catInput form-control"
+                      placeholder="Death Batsman"
+                      disabled
+                    />
+                    <datalist id="bat_deathList"> </datalist>
+                  </div>
+                  <div class="col">
+                    <button
+                      onclick="addPlayerCategory('bat_death',this)"
+                      class="categoryBtn"
+                    >
+                      ADD
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="player-card3"></div>
+            </div>
+            <h5 style="color: rgb(255, 0, 0);" ><span style="color: rgb(229, 231, 114);"  > Maximum Players:</span> 2 </h5>
+          </div>
+        
+
+          <!-- Death Ends -->
+        </div>
+        <!-- Player Card Display Ends-->
+      </div>
+      <!-- Batting Section Ends -->
+      <div style="padding: 2%"></div>
+
+      <!-- Bowling Section Starts-->
+      <div class="bowling-section" style="margin-top: 30px">
+        <!-- Batting score total -->
+        <div class="score-card">
+          <h1 style="color: goldenrod; font-size: 36px">Bowling:</h1>
+          <div
+            class="total-score-box"
+            style="
+              background: rgba(255, 255, 255, 0.25);
+              box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+              backdrop-filter: blur(4px);
+              -webkit-backdrop-filter: blur(4px);
+              border-radius: 10px;
+            "
+          >
+            <h1 style="color: white" id="total_bow_bonus">0</h1>
+          </div>
+        </div>
+        <!-- Batting score total ends-->
+        <!-- Player Card Display Starts-->
+        <div class="wrapper2">
+          <!-- Powerplay Starts -->
+          <div class="">
+            <div class="score-card">
+              <h1>Powerplay:</h1>
+              <div
+                class="total-score-box"
+                style="
+                  background: rgba(255, 255, 255, 0.25);
+                  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                  backdrop-filter: blur(4px);
+                  -webkit-backdrop-filter: blur(4px);
+                  border-radius: 10px;
+                "
+              >
+                <h2 id="bow_ppl">0</h2>
+              </div>
+            </div>
+
+            <div
+              class="player-card2"
+              style="
+                background: rgba(255, 255, 255, 0.25);
+                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+                border-radius: 10px;
+              "
+            >
+              <div class="rect-card-search">
+                <div class="row" style="padding-left: 3rem">
+                  <div class="col-lg-8">
+                    <input
+                      list="bow_pplList"
+                      name="browser"
+                      class="catInput form-control"
+                      placeholder="Powerplay Bowler"
+                      disabled
+                    />
+                    <datalist id="bow_pplList"> </datalist>
+                  </div>
+                  <div class="col">
+                    <button
+                      onclick="addPlayerCategory('bow_ppl',this)"
+                      class="categoryBtn"
+                    >
+                      ADD
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="player-card3"></div>
+            </div>
+            <h5 style="color: rgb(255, 0, 0);" ><span style="color: rgb(229, 231, 114);"  > Maximum Players:</span> 3 </h5>
+
+          </div>
+          <!-- Powerplay Ends -->
+
+          <!-- Mid Over Starts -->
+          <div class="">
+            <div class="score-card">
+              <h1>Mid Overs:</h1>
+              <div
+                class="total-score-box"
+                style="
+                  background: rgba(255, 255, 255, 0.25);
+                  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                  backdrop-filter: blur(4px);
+                  -webkit-backdrop-filter: blur(4px);
+                  border-radius: 10px;
+                "
+              >
+                <h2 id="bow_mid">0</h2>
+              </div>
+            </div>
+
+            <div
+              class="player-card2"
+              style="
+                background: rgba(255, 255, 255, 0.25);
+                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+                border-radius: 10px;
+              "
+            >
+              <div class="rect-card-search">
+                <div class="row" style="padding-left: 3rem">
+                  <div class="col-lg-8">
+                    <input
+                      list="bow_midList"
+                      name="browser"
+                      class="catInput form-control"
+                      placeholder="Mid Over Bowler"
+                      disabled
+                    />
+                    <datalist id="bow_midList"> </datalist>
+                  </div>
+                  <div class="col">
+                    <button
+                      onclick="addPlayerCategory('bow_mid',this)"
+                      class="categoryBtn"
+                    >
+                      ADD
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="player-card3"></div>
+            </div>
+            <h5 style="color: rgb(255, 0, 0);" ><span style="color: rgb(229, 231, 114);"  > Maximum Players:</span> 3 </h5>
+
+          </div>
+          <!-- Mid Over Ends -->
+
+          <!-- Death Starts -->
+          <div class="">
+            <div class="score-card">
+              <h1>Death:</h1>
+              <div
+                class="total-score-box"
+                style="
+                  background: rgba(255, 255, 255, 0.25);
+                  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                  backdrop-filter: blur(4px);
+                  -webkit-backdrop-filter: blur(4px);
+                  border-radius: 10px;
+                "
+              >
+                <h2 id="bow_death">0</h2>
+              </div>
+            </div>
+
+            <div
+              class="player-card2"
+              style="
+                background: rgba(255, 255, 255, 0.25);
+                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+                border-radius: 10px;
+              "
+            >
+              <div class="rect-card-search">
+                <div class="row" style="padding-left: 3rem">
+                  <div class="col-lg-8">
+                    <input
+                      list="bow_deathList"
+                      name="browser"
+                      class="catInput form-control"
+                      placeholder="Death Bowler"
+                      disabled
+                    />
+                    <datalist id="bow_deathList"> </datalist>
+                  </div>
+                  <div class="col">
+                    <button
+                      onclick="addPlayerCategory('bow_death',this)"
+                      class="categoryBtn"
+                    >
+                      ADD
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="player-card3"></div>
+            </div>
+            <h5 style="color: rgb(255, 0, 0);" ><span style="color: rgb(229, 231, 114);"  > Maximum Players:</span> 2 </h5>
+
+          </div>
+          <!-- Death Ends -->
+        </div>
+        <br /><br />
+      </div>
+      <!-- Player Card Display Ends-->
+
+      <!-- Submit Section Starts -->
+      <div style="display: flex; align-items: center; justify-content: center">
+        <div
+          class="submit-section"
+          style="
+            width: 30rem;
+            height: 15rem;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+          "
+        >
+          <h1 style="color: goldenrod; padding-bottom: 0.5rem">FINAL SCORE</h1>
+          <div class="score-card">
+            <div>
+              <form
+                action="{% url 'calcLogin' code=code %}"
+                id="form"
+                method="post"
+              >
+                {% csrf_token %}
+                <h1>
+                  <input
+                    id="total_score"
+                    value="0"
+                    class="total-score-box"
+                    name="score"
+                    readonly
+                    style="
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      text-align: center;
+                      color: white;
+                      border: white 2.5px solid;
+                      background: none;
+                      padding-bottom: 0.25rem;
+                    "
+                  />
+                </h1>
+              </form>
+              {% for msg in messages %}
+              <p style="color: red">{{msg}}</p>
+              {% endfor %}
+            </div>
+          </div>
+          <!-- SUbmit Button Starts-->
+          <div>
+            <p
+              class="submitBtn"
+              onclick="ConfirmForm()"
+              style="padding-top: 0.6rem"
+            >
+              SUBMIT
+            </p>
+          </div>
+          <!-- SUbmit Button Ends -->
+        </div>
+        <!-- Final Submission popup starts -->
+        <div
+          id="BlockUIConfirm"
+          class="BlockUIConfirm"
+          script="$('#BlockUIConfirm').hide();"
+        >
+          <div class="blockui-mask"></div>
+          <div
+            class="RowDialogBody"
+            style="
+              background: rgba(255, 255, 255, 0.25);
+              box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+              backdrop-filter: blur(10px);
+              -webkit-backdrop-filter: blur(10px);
+              border-radius: 10px;
+              color: white;
+            "
+          >
+            <div class="confirm-header row-dialog-hdr-success">
+              <h2 style="color: goldenrod">Confirm Submission</h2>
+            </div>
+            <div class="confirm-body">
+              You will not be able to submit again!
+            </div>
+            <div class="confirm-btn-panel pull-right">
+              <div class="btn-holder pull-right">
+                <input
+                  type="submit"
+                  class="row-dialog-btn btn btn-success"
+                  value="Yes, Accept"
+                  style="background-color: black; border: black"
+                  onclick="Submit();"
+                />
+                <input
+                  type="button"
+                  class="row-dialog-btn btn btn-naked"
+                  value="No, Cancel"
+                  onclick="$('#BlockUIConfirm').hide();"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Final Submission popup starts ends -->
+      </div>
+      <br />
+      <br />
+
+      <!-- Submit Section Ends -->
+    </div>
+    <!-- Bonus Section Ends -->
+
+    <!-- script tag to access variables  -->
+    <script>
+      // $("#BlockUIConfirm").hide();
+      function ConfirmForm() {
+        console.log("hiii",playerCount);
+        if(selectedPlayers.length==11){
+          $("#BlockUIConfirm").show();
+        } else{
+          snackbarFunction("Select 11 players first");
+        }
+      }
+
+      function Submit() {
+        $("#BlockUIConfirm").hide();
+        $("form").submit();
+      }
+
+      var playerList = JSON.parse("{{ json_players | escapejs }}");
+    </script>
+    <!-- js file for team selection card added dynamically -->
+    <script src="{% static 'calcLogin.js' %}"></script>
+  </body>
+</html>
